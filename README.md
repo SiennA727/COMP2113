@@ -3,3 +3,5 @@
 description.
 
 newline
+
+git commit -m "new" -m "description"
