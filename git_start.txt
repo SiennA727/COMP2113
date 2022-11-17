@@ -1,7 +1,0 @@
-// branch
-
-git branch
-git checkout feature-readme-instructions
-
-git diff
-git merge
