@@ -316,7 +316,7 @@ int main(){
 }
 ```
 
-## Append to file
+### Append to file
 
 `fout.open("data.txt",ios::app)`
 
@@ -352,5 +352,150 @@ int main(){
   cout << name << ", " << age << ", " << weight << endl;
 
   return 0;
+}
+```
+
+### Reading until End Of File (EOF)
+
+Using `while (fin >> x)` which returns false when EOF is reached and there is nothing to read anymore
+
+example:
+
+```c++
+while (fin >> x){
+  sum += x;
+}
+```
+
+### Reading lines from a file
+
+`getline(fin, str)` reads a line and store as string object
+
+example:
+
+```c++
+string line;
+while (getline(fin, line)){
+  cout << line << endl;
+}
+```
+
+## Input String Stream
+
+### Declaration
+
+`#include <sstream>`: extract a stream of characters from string
+
+```c++
+string str;
+istringstream iss(str);
+```
+
+*input_string_stream*
+
+```c++
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main(){
+  string line  = " apple orange banana ", word;
+
+  istringstream line_in(line);
+
+  while ( line_in >> word ) {
+    cout << "\"" << word << "\"" << endl;
+  }
+
+  return 0;
+}
+```
+
+## Stream Output Formatting
+
+`endl`: move the insertion point to next lines
+
+### Default floating point notation
+
+default to 6 significant digits
+
+```c++
+double a = 1.2345678; // 1.23456
+double b = 0.00012345678; // 0.000123457
+double c = 1234567.8; // 1.23456e+06
+double d = 0.000012345678; // 1.23457e-05
+```
+
+### `showpoint` Manipulator
+
+```c++
+double e = 12.0;
+cout << e << endl; // 12
+cout << showpoint << e << endl; // 12.0000
+```
+
+### `fixed` and `scientific` Manipulators
+
+```c++
+double f = 0.135;
+cout << f << endl; // 0.135
+cout << fixed << f << endl; // 0.135000
+cout << scientific << f << endl; // 1.350000e-01
+
+cout.unsetf(ios_base::floatfield);
+cout << f << endl; // 0.135
+```
+
+### `setprecision` Manipulator
+
+Set maximum meaningful digits **before and after** the decimal point
+
+```c++
+#include <iomanip>
+double a = 1.2345678
+cout << setprecision(2);
+cout << a << endl; // 1.2
+```
+
+### `setw`, `setfill` and `left` / `right`
+
+```c++
+#include <iomanip>
+int x = 12;
+string a = "Hello";
+double b = 34.567;
+
+cout << fixed << setprecision(2);
+cout << setfill('-');
+
+cout << left;
+cout << setw(5) << x << setw(8) << a;
+cout << setw(6) << b << endl;
+
+cout << right;
+cout << setw(5) << x << setw(8) << a;
+cout << setw(6) << b << endl;
+
+// output:
+// 12345678901234567890
+// 12---Hello---34.57-
+// ---12---Hello-34.57
+```
+
+# Recursion
+
+0! = 1
+iterative: n! = n * (n-1) * (n-2) * ... * 2 * 1, if n > 0
+recursive: n! = n * (n-1)!, if n > 0
+
+A recursive function:
+
+```c++
+int factorial(int num) {
+  if (num == 0)
+    return 1;
+  else
+    return num * factorial(num – 1);
 }
 ```
