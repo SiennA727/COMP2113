@@ -159,7 +159,7 @@ direct to same location: `cp fileA fileB 1> result.txt 2&1`
 pipe output as input:
 - `ls -l | grep "Jan 26"`
 - `ls -l | grep -E ^...x..x..x`
-- `cat -d' ' -f4-8 mark.txt | ./mark > result.txt
+- `cat -d' ' -f4-8 mark.txt | ./mark > result.txt`
 
 ## Search
 
