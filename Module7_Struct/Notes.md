@@ -362,9 +362,7 @@ Using `while (fin >> x)` which returns false when EOF is reached and there is no
 example:
 
 ```c++
-while (fin >> x){
-  sum += x;
-}
+while (fin >> x){ sum += x; }
 ```
 
 ### Reading lines from a file
